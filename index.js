@@ -46,6 +46,7 @@ module.exports.save = function(image) {
         return nodefn.call(s3.putObject.bind(s3), {
             Bucket: config.bucket,
             Key: targetFilename,
+            ACL: 'public-read',
             Body: buffer,
             ContentType: image.type,
             CacheControl: 'max-age=' + (30 * 24 * 60 * 60) // 1 month
